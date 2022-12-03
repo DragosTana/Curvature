@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import csv
 import numpy as np
 import circle_fit as cf
+
 def plot_track(data):
     x, y = data.T
     fig, ax = plt.subplots()
@@ -10,11 +11,13 @@ def plot_track(data):
     ax.set_ylabel("y")
     ax.scatter(x, y, marker=".")
     plt.show()
+
 def plot_curvature(curvature):
     x = list(range(len(curvature)))
     fig, ax = plt.subplots()
     ax.plot(x, curvature)
     plt.show()
+
 def load_csv(file_name):
     data = []
     with open(file_name, 'r') as csv_file:
@@ -35,12 +38,12 @@ def calculate_curvature(track, n):
 
     return curvature
 
-
 def main():
     data = load_csv("Pista.csv")
     data = np.array(data)
     plot_track(data)
     curvature = calculate_curvature(data, 2)
     plot_curvature(curvature)
+    
 main()
 
